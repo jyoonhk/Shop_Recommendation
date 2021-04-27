@@ -1,4 +1,5 @@
 ﻿Original,Combined
+Blazers,Jackets & Coats
 Brooks-MensPants,Trousers
 Brooks-MensShorts,Shorts
 Brooks-MensSuits,Suits
@@ -6,7 +7,9 @@ Brooks-WomenDresses,Dresses
 Brooks-WomenKnitwear,Jumpers
 Brooks-WomenPants,Trousers
 Brooks-WomenSkirts,Skirts
-Brooks-WomensTops,Tops
+Brooks-WomensTops,Blouses
+Dresses & Jumpsuits,Dresses
+Hoodies & Sweatshirts,Jumpers
 HugoBoss-Blouses,Blouses
 HugoBoss-Dresses,Dresses
 HugoBoss-MensKnitwear,Jumpers
@@ -16,19 +19,27 @@ HugoBoss-MensSuits,Suits
 HugoBoss-MensTrousers,Trousers
 HugoBoss-MensTshirts,T-Shirts
 HugoBoss-Skirts,Skirts
-HugoBoss-WomensTops,Tops
+HugoBoss-WomensTops,Blouses
 HugoBoss-WomenSuits,Suits
 Jackets,Jackets & Coats
+"Jackets, Coats & Vests",Jackets & Coats
+Jeans & Denim,Jeans
 MEN_casual-shirts,Shirts
 MEN_dress shirts,Shirts
 MEN_jacket & coats & vests,Jackets & Coats
+MEN_jeans & denim,Jeans
 MEN_jeans _ denim,Jeans
 MEN_polo-shirts,Polos
+MEN_shorts & swim trunks,Shorts
 MEN_shorts _ swim trunks,Shorts
 MEN_sport coats & blazers,Jackets & Coats
+MEN_suits & tuxedos,Suits
 MEN_suits _ tuxedos,Suits
+MEN_sweaters & cardigans,Jumpers
 MEN_sweaters _ cardigans,Jumpers
+MEN_sweatershirts & sweatpants & hoodies,Jumpers
 MEN_sweatershirts _ sweatpants _ hoodies,Jumpers
+MEN_trousers & chinos,Trousers
 MEN_trousers _ chinos,Trousers
 MEN_t-shirts,T-Shirts
 Mens Blazer_Cardigan_Coats,Jackets & Coats
@@ -61,7 +72,6 @@ Mens Sweaters,Jumpers
 Mens Sweatshirts,Jumpers
 Mens Sweatshirts & Hoodies,Jumpers
 Mens Tops & T-Shirts,T-Shirts
-Mens Tops & T-shirts,T-Shirts
 Mens Trousers,Trousers
 Mens T-shirt,T-Shirts
 Mens T-Shirts,T-Shirts
@@ -69,10 +79,13 @@ Mens T-shirts_tanktops,T-Shirts
 Polo,Polos
 Polo Shirts,Polos
 Shirts,Shirts
+Shorts & Skirts,Shorts
+Sweaters,Jumpers
+T-shirts,T-Shirts
+"WOMEN__Jackets, Coats _ Vests",Jackets & Coats
 WOMEN_Blazers,Jackets & Coats
 WOMEN_Dresses _ Jumpsuits,Dresses
 WOMEN_Hoodies _ Sweatshirts,Jumpers
-"WOMEN__Jackets, Coats _ Vests",Jackets & Coats
 WOMEN_Jeans _ Denim,Jeans
 WOMEN_Pants,Trousers
 WOMEN_Polo Shirts,Polos
@@ -121,8 +134,9 @@ Womens Sweatshirts & T-Shirts,T-Shirts
 Womens Sweatwears,Jumpers
 Womens Tops,T-Shirts
 Womens Tops & T-Shirts,T-Shirts
-Womens Tops & T-shirts,T-Shirts
 Womens Trousers,Trousers
 Womens Trousers & Jeans,Trousers
 Womens T-shirt_tanktops,T-Shirts
 Womens T-Shirts,T-Shirts
+Mens Tops & T-shirts,T-Shirts
+Womens Tops & T-shirts,T-Shirts
