@@ -19,6 +19,18 @@ HugoBoss-Skirts,Skirts
 HugoBoss-WomensTops,Tops
 HugoBoss-WomenSuits,Suits
 Jackets,Jackets & Coats
+MEN_casual-shirts,Shirts
+MEN_dress shirts,Shirts
+MEN_jacket & coats & vests,Jackets & Coats
+MEN_jeans _ denim,Jeans
+MEN_polo-shirts,Polos
+MEN_shorts _ swim trunks,Shorts
+MEN_sport coats & blazers,Jackets & Coats
+MEN_suits _ tuxedos,Suits
+MEN_sweaters _ cardigans,Jumpers
+MEN_sweatershirts _ sweatpants _ hoodies,Jumpers
+MEN_trousers _ chinos,Trousers
+MEN_t-shirts,T-Shirts
 Mens Blazer_Cardigan_Coats,Jackets & Coats
 Mens Casual Outers,Jackets & Coats
 Mens Casual Pants,Trousers
@@ -57,6 +69,18 @@ Mens T-shirts_tanktops,T-Shirts
 Polo,Polos
 Polo Shirts,Polos
 Shirts,Shirts
+WOMEN_Blazers,Jackets & Coats
+WOMEN_Dresses _ Jumpsuits,Dresses
+WOMEN_Hoodies _ Sweatshirts,Jumpers
+"WOMEN__Jackets, Coats _ Vests",Jackets & Coats
+WOMEN_Jeans _ Denim,Jeans
+WOMEN_Pants,Trousers
+WOMEN_Polo Shirts,Polos
+WOMEN_Shirts & Blouses,Blouses
+WOMEN_Shorts,Shorts
+WOMEN_Skirts,Skirts
+WOMEN_Sweaters,Jumpers
+WOMEN_T-shirts,T-Shirts
 Womens Blazer_Cardigan_Coats,Jackets & Coats
 Womens Casual Outers,Jackets & Coats
 Womens Coats,Jackets & Coats
