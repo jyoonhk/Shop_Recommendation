@@ -1,0 +1,9 @@
+﻿Shop_Cluster,Gender,Style,Adidas,CalvinKleinMen,CalvinKleinPerformance,CalvinKleinWomen,Max&Co,MaxMara,Muji,Nike,Brooks Brothers,Boss,Fred Perry,Saint Laurent,Uniqlo,Moncler,Ralph_Lauren
+1,Mens,Casual,0.1,0.15,0.1,0,0,0,0.1,0.15,0,0,0.1,0.05,0.15,0,0.1
+2,Womens,Casual,0.1,0,0.1,0.15,0.1,0,0.1,0.1,0,0,0.1,0,0.15,0,0.1
+3,Mens,Casual,0.1,0.15,0.1,0,0,0,0.15,0.05,0.1,0,0.1,0.05,0.2,0,0
+4,Womens,Casual,0.1,0,0.1,0.15,0.1,0.15,0.1,0,0,0,0.1,0,0.2,0,0
+5,Mens,Smart,0,0.1,0,0,0,0,0,0,0.2,0.1,0.1,0.1,0,0.2,0.2
+6,Womens,Smart,0,0,0,0.1,0.2,0.2,0,0,0,0.1,0.1,0.1,0,0.1,0.1
+7,Mens,Sports,0.2,0.15,0.2,0,0,0,0.1,0.25,0,0,0,0,0.1,0,0
+8,Womens,Sports,0.2,0,0.2,0.15,0,0,0.1,0.25,0,0,0,0,0.1,0,0
