@@ -13,7 +13,8 @@ import streamlit as st
 
 headers = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36'}
 folder = 'C:/Users/danie/Documents/GitHub/Shop_Recommendation/4. Deployment/Test/'
-image_folder = 'Data/'
+#image_folder = 'Data/'
+image_folder = 'C:/Users/danie/Documents/FTDS/Capstone/1. Webscraping/Not_Original_Images/Data/'
 
 product_list = {
     'Mens': ['Jackets & Coats', 'Jeans', 'Jumpers', 'Polos', 'Shirts', 'Shorts', 'Suits', 'Trousers', 'T-Shirts'],
