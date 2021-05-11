@@ -143,7 +143,7 @@ def app():
         stacked_bar = plot_stacked_bar(user_id)
         st_echarts(options=stacked_bar, height="300px")
 
-    profile_expander_1 = st.beta_expander('My Favourite Shops')
+    profile_expander_1 = st.beta_expander('My Favourite Stores')
     with profile_expander_1:
         doughnut_shop = plot_doughnut_shop(user_id)
         st_echarts(options=doughnut_shop, height="300px")
