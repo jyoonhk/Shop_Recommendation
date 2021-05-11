@@ -140,13 +140,9 @@ def app():
 
     profile_expander = st.beta_expander('My Favourite Shops')
     with profile_expander:
-        subset = user_df[user_df['User_ID'] == int(user_id)]
-        fig, ax = plt.subplots()
-        plt.title('Items purchased')
-        plt.xticks(rotation=45)
-        sns.countplot(data = subset, x = 'Brand')
-        st.pyplot(fig)
-
+        # subset = user_df[user_df['User_ID'] == int(user_id)]
+        doughnut = plot_doughnut(user_id)
+        st_echarts(options=doughnut, height="300px")
 
     # #Print Shop Logos
     # st.header('Recommended for you')

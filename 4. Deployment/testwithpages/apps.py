@@ -10,6 +10,8 @@ from scipy.spatial.distance import pdist
 from scipy.spatial.distance import squareform
 import math
 import streamlit as st
+from streamlit_echarts import st_echarts
+from streamlit_echarts import st_pyecharts
 
 headers = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36'}
 folder = 'C:/Users/danie/Documents/GitHub/Shop_Recommendation/4. Deployment/Test/'
@@ -242,3 +244,42 @@ def rec_choice(x):
     if x == 3:
         product_select = st.selectbox('Select a product', list(product_images['Womens'].keys()))
         return product_select
+
+
+
+    profile_expander = st.beta_expander('My Favourite Shops')
+    with profile_expander:
+        subset = user_df[user_df['User_ID'] == int(user_id)]
+        fig, ax = plt.subplots()
+        plt.title('Items purchased')
+        plt.xticks(rotation=45)
+        sns.countplot(data = subset, x = 'Brand')
+        st.pyplot(fig)
+
+def plot_doughnut(user_id):
+    subset = user_df[user_df['User_ID'] == int(user_id)]
+    shop_list = dict(subset['Brand'].value_counts())
+    doughnut = {
+        "tooltip": {"trigger": "item"},
+        "legend": {"top": "5%", "left": "center"},
+        "series": [
+            {
+                "name": "Brands",
+                "type": "pie",
+                "radius": ["40%", "70%"],
+                "avoidLabelOverlap": False,
+                "itemStyle": {
+                    "borderRadius": 10,
+                    "borderColor": "#fff",
+                    "borderWidth": 2,
+                },
+                "label": {"show": False, "position": "center"},
+                "emphasis": {
+                    "label": {"show": True, "fontSize": "40", "fontWeight": "bold"}
+                },
+                "labelLine": {"show": False},
+                "data": [{"value": int(value), "name": key} for key, value in shop_list.items()],
+            }
+        ],
+    }
+    return doughnut
