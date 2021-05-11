@@ -12,9 +12,9 @@ app = MultiApp()
 
 # Add all your application here
 app.add_app("Home", home.app)
+app.add_app("Data Overview and Modelling", model.app)
 app.add_app("Clothes Detector(Yolov5)", detector.app)
-app.add_app("Recommender", main.app)
-app.add_app("Model", model.app)
-app.add_app("test", test.app)
+app.add_app("Recommendation Engine", main.app)
+app.add_app("test page", test.app)
 # The main app
 app.run()
