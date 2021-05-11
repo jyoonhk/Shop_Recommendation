@@ -311,3 +311,24 @@ def plot_doughnut_products(user_id):
         ],
     }
     return doughnut_products
+
+def plot_stacked_bar(user_id):
+    subset = user_df[user_df['User_ID'] == int(user_id)]
+    brands = list(subset['Brand'].unique())
+    items = list(subset['Category'].unique())
+    stacked_bar = {
+        "tooltip": {"trigger": "axis", "axisPointer": {"type": "shadow"}},
+        "legend": {
+            "data": items
+        },
+        "grid": {"left": "3%", "right": "4%", "bottom": "3%", "containLabel": True},
+        "xAxis": {"type": "value"},
+        "yAxis": {
+            "type": "category",
+            "data": brands,
+        },
+        "series": [{"name": item, "type": "bar", "stack": "total", "label": {"show": False}, "emphasis": {"focus": "series"}, 
+        "data": [len(subset[(subset['Category']==item) & (subset['Brand']==brand)]) for brand in brands ],} for item in items],
+    }
+    return stacked_bar
+    

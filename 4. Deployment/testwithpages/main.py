@@ -137,6 +137,11 @@ def app():
                     count+=1
                 except:
                     pass
+    
+    profile_expander_3 = st.beta_expander('My Products and Stores')
+    with profile_expander_3:
+        stacked_bar = plot_stacked_bar(user_id)
+        st_echarts(options=stacked_bar, height="300px")
 
     profile_expander_1 = st.beta_expander('My Favourite Shops')
     with profile_expander_1:
@@ -147,3 +152,4 @@ def app():
     with profile_expander_2:
         doughnut_products = plot_doughnut_products(user_id)
         st_echarts(options=doughnut_products, height="300px")
+
