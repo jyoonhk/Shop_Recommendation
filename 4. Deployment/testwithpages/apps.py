@@ -25,20 +25,6 @@ shop_list = {
     'Mens': ['Adidas', 'BrooksBrothers', 'CalvinKleinMen', 'CalvinKleinPerformance','FredPerry', 'HugoBoss', 'Moncler', 'Muji', 'Nike', 'Saint_Laurent', 'Uniqlo'],
     'Womens': ['Adidas', 'CalvinKleinWomen', 'CalvinKleinPerformance','HugoBoss', 'Max&Co', 'MaxMara', 'Moncler', 'Muji', 'Nike', 'Saint_Laurent', 'Uniqlo']}
 
-shop_images = {
-    'Adidas':'Adidas.jpg', 'BrooksBrothers':'BrooksBrothers.png', 'CalvinKleinMen': 'CalvinKlein.jpg',
-    'CalvinKleinWomen':'CalvinKlein.jpg', 'CalvinKleinPerformance':'CalvinKleinPerformance.jpeg',
-    'FredPerry':'FredPerry.jpg', 'HugoBoss':'HugoBoss.png', 'Max&Co':'Max&Co.png', 'MaxMara':'MaxMara.png',
-    'Moncler':'Moncler.png', 'Muji':'Muji.png', 'Nike':'Nike.png', 'Saint_Laurent':'Saint_Laurent.png', 'Uniqlo':'Uniqlo.png'}
-product_images = {
-    'Womens':{'Blouse':'Blouse.jpg', 'Dresses':'Dresses.jpg', 'Skirts':'Skirts.jpg', 'Jackets & Coats':'Jackets & Coats.jpg', 
-    'Jeans':'Jeans.png', 'Jumpers':'Jumpers.jpg', 'Polos':'Polos.jpg', 'Shirts':'Shirts.jpg',
-     'Shorts':'Shorts.png', 'Suits':'Suits.jpg', 'Trousers':'Trousers.jpg', 'T-Shirts':'T-Shirts.jpg'},
-    'Mens': {'Jackets & Coats':'Jackets & Coats.png', 
-    'Jeans':'Jeans.png', 'Jumpers':'Jumpers.jpg', 'Polos':'Polos.jpg', 'Shirts':'Shirts.jpg',
-     'Shorts':'Shorts.jpg', 'Suits':'Suits.jpg', 'Trousers':'Trousers.jpg', 'T-Shirts':'T-Shirts.jpg'}}
-
-
 @st.cache
 def get_user_df():
     return pd.read_csv('csv/User_db.csv')
