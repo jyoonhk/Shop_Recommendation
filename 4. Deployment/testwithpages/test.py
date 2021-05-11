@@ -2,6 +2,7 @@ import streamlit as st
 from streamlit_echarts import st_echarts
 from pyecharts import options as opts
 import model
+
 doughnut = {
     "tooltip": {"trigger": "item"},
     "legend": {"top": "5%", "left": "center"},
@@ -88,7 +89,14 @@ def app():
             },
         ],
     }
-    c1 = st_echarts(options=stackedbar, height="300px")
-    c2 = st_echarts(options=doughnut, height="300px")
-    c1, c2 = st.beta_columns(2)
+
+    row2_1, row2_2 = st.beta_columns((2,1))
+
+    with row2_1:
+        st.write("Breakdown of categories per brand scraped")
+        st_echarts(options=stackedbar, height="300px")
+
+    with row2_2:
+        st.write("breakdown of brands scraped")
+        st_echarts(options=doughnut, height="300px")
 
