@@ -256,10 +256,10 @@ def rec_choice(x):
         sns.countplot(data = subset, x = 'Brand')
         st.pyplot(fig)
 
-def plot_doughnut(user_id):
+def plot_doughnut_shop(user_id):
     subset = user_df[user_df['User_ID'] == int(user_id)]
     shop_list = dict(subset['Brand'].value_counts())
-    doughnut = {
+    doughnut_shop = {
         "tooltip": {"trigger": "item"},
         "legend": {"top": "5%", "left": "center"},
         "series": [
@@ -282,4 +282,32 @@ def plot_doughnut(user_id):
             }
         ],
     }
-    return doughnut
+    return doughnut_shop
+
+def plot_doughnut_products(user_id):
+    subset = user_df[user_df['User_ID'] == int(user_id)]
+    shop_list = dict(subset['Category'].value_counts())
+    doughnut_products = {
+        "tooltip": {"trigger": "item"},
+        "legend": {"top": "5%", "left": "center"},
+        "series": [
+            {
+                "name": "Brands",
+                "type": "pie",
+                "radius": ["40%", "70%"],
+                "avoidLabelOverlap": False,
+                "itemStyle": {
+                    "borderRadius": 10,
+                    "borderColor": "#fff",
+                    "borderWidth": 2,
+                },
+                "label": {"show": False, "position": "center"},
+                "emphasis": {
+                    "label": {"show": True, "fontSize": "40", "fontWeight": "bold"}
+                },
+                "labelLine": {"show": False},
+                "data": [{"value": int(value), "name": key} for key, value in shop_list.items()],
+            }
+        ],
+    }
+    return doughnut_products

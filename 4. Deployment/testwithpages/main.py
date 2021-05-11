@@ -138,24 +138,12 @@ def app():
                 except:
                     pass
 
-    profile_expander = st.beta_expander('My Favourite Shops')
-    with profile_expander:
-        # subset = user_df[user_df['User_ID'] == int(user_id)]
-        doughnut = plot_doughnut(user_id)
-        st_echarts(options=doughnut, height="300px")
+    profile_expander_1 = st.beta_expander('My Favourite Shops')
+    with profile_expander_1:
+        doughnut_shop = plot_doughnut_shop(user_id)
+        st_echarts(options=doughnut_shop, height="300px")
 
-    # #Print Shop Logos
-    # st.header('Recommended for you')
-    # st.subheader('By Shop:')
-    # shop_images_loc = ['Logos/' + shop_images[shop] for shop in shop_images.keys()]
-    # shop_labels = [label for label in shop_images.keys()]
-    # count = 0
-    # n = 4
-    # for row in range(len(shop_images_loc)//n +1):
-    #     cols = st.beta_columns(n)
-    #     for column in range(n):
-    #         try:
-    #             cols[column].image(shop_images_loc[count], width = 150) #, caption = shop_labels[count]
-    #             count+=1
-    #         except: 
-    #             continue
+    profile_expander_2 = st.beta_expander('My Favourite Products')
+    with profile_expander_2:
+        doughnut_products = plot_doughnut_products(user_id)
+        st_echarts(options=doughnut_products, height="300px")
