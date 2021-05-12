@@ -22,8 +22,8 @@ product_list = {
     'Womens': ['Blouse', 'Dresses', 'Skirts', 'Jackets & Coats', 'Jeans', 'Jumpers', 'Polos', 'Shirts', 'Shorts', 'Suits', 'Trousers', 'T-Shirts']}
 
 shop_list = {
-    'Mens': ['Adidas', 'BrooksBrothers', 'CalvinKleinMen', 'CalvinKleinPerformance','FredPerry', 'HugoBoss', 'Moncler', 'Muji', 'Nike', 'Saint_Laurent', 'Uniqlo'],
-    'Womens': ['Adidas', 'CalvinKleinWomen', 'CalvinKleinPerformance','HugoBoss', 'Max_Co', 'MaxMara', 'Moncler', 'Muji', 'Nike', 'Saint_Laurent', 'Uniqlo']}
+    'Mens': ['Adidas', 'Brooks Brothers', 'Calvin Klein Men', 'Calvin Klein Performance','Fred Perry', 'Hugo Boss', 'Moncler', 'Muji', 'Nike', 'Saint Laurent', 'Uniqlo', 'Ralph Lauren'],
+    'Womens': ['Adidas', 'Calvin Klein Women', 'Calvin Klein Performance','Hugo Boss', 'Max&Co', 'Max Mara', 'Moncler', 'Muji', 'Nike', 'Saint Laurent', 'Uniqlo', 'Ralph Lauren']}
 
 @st.cache
 def get_user_df():
