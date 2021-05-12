@@ -149,3 +149,78 @@ def app():
             st.write("My Products")
             doughnut_products = plot_doughnut_products(user_id)
             st_echarts(options=doughnut_products, height="300px")
+        
+        # Example images used in slides
+        # radar_style = {
+        #     "title": {"text": ""},
+        #     "legend": {"data": ["Mens Casual 1", "Mens Smart 1"]},
+        #     "radar": {
+        #         "indicator": [
+        #             {"name": "Jeans", "max": 0.4},
+        #             {"name": "Polos", "max": 0.4},
+        #             {"name": "Shorts", "max": 0.4},
+        #             {"name": "T-Shirts", "max": 0.4},
+        #             {"name": "Jackets & Coats", "max": 0.4},
+        #             {"name": "Jumpers", "max": 0.4},
+        #             {"name": "Shirts", "max": 0.4},
+        #             {"name": "Suits", "max": 0.4},
+        #             {"name": "Trousers", "max": 0.4},
+        #         ]
+        #     },
+        #     "series": [
+        #         {
+        #             "name": "Product Weights",
+        #             "type": "radar",
+        #             "data": [
+        #                 {
+        #                     "value": [0.25, 0.2, 0.2, 0.35, 0, 0, 0, 0, 0.1],
+        #                     "name": "Mens Casual 1",
+        #                 },
+        #                 {
+        #                     "value": [0.1, 0, 0, 0, 0.2, 0.15, 0.1, 0.25, 0.15, 0.15],
+        #                     "name": "Mens Smart 1",
+        #                 },
+        #             ],
+        #         }
+        #     ],
+        # }
+
+        # radar_style2 = {
+        #     "title": {"text": ""},
+        #     "legend": {"data": ["Mens Casual 1", "Mens Smart 1"]},
+        #     "radar": {
+        #         "indicator": [
+        #             {"name": "Adidas", "max": 0.25},
+        #             {"name": "CalvinKleinPerformance", "max": 0.25},
+        #             {"name": "Muji", "max": 0.25},
+        #             {"name": "Nike", "max": 0.25},
+        #             {"name": "Uniqlo", "max": 0.25},
+        #             {"name": "Calvin Klein Men", "max": 0.25},
+        #             {"name": "Fred Perry", "max": 0.25},
+        #             {"name": "Saint Laurent", "max": 0.25},
+        #             {"name": "Ralph Lauren", "max": 0.25},
+        #             {"name": "Brooks Brothers", "max": 0.25},
+        #             {"name": "Hugo Boss", "max": 0.25},
+        #             {"name": "Moncler", "max": 0.25},
+        #         ]
+        #     },
+        #     "series": [
+        #         {
+        #             "name": "Nearest Neighbours",
+        #             "type": "radar",
+        #             "data": [
+        #                 {
+        #                     "value": [0.1, 0.15, 0.1, 0.1, 0.15, 0.1, 0.05, 0.15, 0.1, 0, 0, 0],
+        #                     "name": "Mens Casual 1",
+        #                 },
+        #                 {
+        #                     "value": [0, 0, 0, 0, 0, 0.1, 0.1, 0.1, 0.2, 0.2, 0.1, 0.2 ],
+        #                     "name": "Mens Smart 1",
+        #                 },
+        #             ],
+        #         }
+        #     ],
+        # }
+
+        # st_echarts(options=radar_style, height="500px")
+        # st_echarts(options=radar_style2, height="500px")

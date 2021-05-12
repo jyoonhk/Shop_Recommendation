@@ -23,7 +23,7 @@ product_list = {
 
 shop_list = {
     'Mens': ['Adidas', 'BrooksBrothers', 'CalvinKleinMen', 'CalvinKleinPerformance','FredPerry', 'HugoBoss', 'Moncler', 'Muji', 'Nike', 'Saint_Laurent', 'Uniqlo'],
-    'Womens': ['Adidas', 'CalvinKleinWomen', 'CalvinKleinPerformance','HugoBoss', 'Max&Co', 'MaxMara', 'Moncler', 'Muji', 'Nike', 'Saint_Laurent', 'Uniqlo']}
+    'Womens': ['Adidas', 'CalvinKleinWomen', 'CalvinKleinPerformance','HugoBoss', 'Max_Co', 'MaxMara', 'Moncler', 'Muji', 'Nike', 'Saint_Laurent', 'Uniqlo']}
 
 @st.cache
 def get_user_df():
