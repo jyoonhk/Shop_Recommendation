@@ -117,14 +117,15 @@ def app():
                     except:
                         pass 
                     try:
-                        clothes.append(top_df.loc[0, 'name']) 
+                        if clothes not in one_piece:
+                            clothes.append(top_df.loc[0, 'name']) 
                     except:
                         pass
                     try:
-                        clothes.append(bottom_df.loc[0,'name'])
+                        if clothes not in one_piece:
+                            clothes.append(bottom_df.loc[0,'name'])
                     except:
                         pass
-                        print("Did not detect Correctly - Try Again")
                     profile_expander_1 = st.beta_expander('For Men')
                     my_bar.progress(70)
                     with profile_expander_1:
@@ -248,7 +249,7 @@ def app():
 
         # button_x = st.button("Do it")
 
-
+        my_bar = st.progress(0)
         #preprocessing images somewhat - might not be necessary for future images
         #replace image with captured image in future
         image = Image.open(path + '/customer.jpg')
@@ -264,7 +265,7 @@ def app():
 
         #putting predictions in dataframe
         df = results.pandas().xyxy[0]
-
+        my_bar.progress(15)
         #just cleaning to make dataframe look better (dropping bounding box values)
         df = df.drop(columns = ["xmin", "ymin", "xmax", "ymax"])
         #creating separate dataframes for each clothes category (CAN be cleaner)
@@ -279,7 +280,7 @@ def app():
         one_piece_df = df[df['name'].isin(one_piece)]
         one_piece_df = one_piece_df.loc[one_piece_df.groupby('name')['confidence'].idxmax()]
         one_piece_df = one_piece_df.sort_values(by='confidence', ascending=False).head(1).reset_index()
-
+        my_bar.progress(30)
         #append necessary clothes categories into list
 
 
@@ -289,14 +290,17 @@ def app():
         except:
             pass 
         try:
-            clothes.append(top_df.loc[0, 'name']) 
+            if clothes not in one_piece:
+                clothes.append(top_df.loc[0, 'name']) 
         except:
             pass
         try:
-            clothes.append(bottom_df.loc[0,'name'])
+            if clothes not in one_piece:
+                clothes.append(bottom_df.loc[0,'name'])
         except:
-            print("Did not detect Correctly - Try Again")
             pass
+
+        my_bar.progress(50)
 
         profile_expander_1 = st.beta_expander('For Men')
 
@@ -327,7 +331,7 @@ def app():
 
                     except:
                         pass
-
+        my_bar.progress(75)
         profile_expander_2 = st.beta_expander('For Women')
 
         with profile_expander_2:
@@ -359,4 +363,6 @@ def app():
 
                     except:
                         pass
-                            
+        my_bar.progress(100)
+        time.sleep(2)
+        my_bar.empty()
