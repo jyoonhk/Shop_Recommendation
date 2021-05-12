@@ -3,10 +3,6 @@ import apps
 from apps import *
 import pandas as pd
 from PIL import Image
-import requests
-import random
-import io
-
 
 def app():
     st.markdown("""
@@ -138,18 +134,18 @@ def app():
                 except:
                     pass
     
-    profile_expander_3 = st.beta_expander('My Products and Stores')
-    with profile_expander_3:
+    profile_expander_1 = st.beta_expander('My Products and Stores')
+    with profile_expander_1:
         stacked_bar = plot_stacked_bar(user_id)
         st_echarts(options=stacked_bar, height="300px")
 
-    profile_expander_1 = st.beta_expander('My Favourite Stores')
-    with profile_expander_1:
-        doughnut_shop = plot_doughnut_shop(user_id)
-        st_echarts(options=doughnut_shop, height="300px")
+        chart1, chart2 = st.beta_columns(2)
+        with chart1:
+            st.write("My Stores")
+            doughnut_shop = plot_doughnut_shop(user_id)
+            st_echarts(options=doughnut_shop, height="300px")
 
-    profile_expander_2 = st.beta_expander('My Favourite Products')
-    with profile_expander_2:
-        doughnut_products = plot_doughnut_products(user_id)
-        st_echarts(options=doughnut_products, height="300px")
-
+        with chart2:
+            st.write("My Products")
+            doughnut_products = plot_doughnut_products(user_id)
+            st_echarts(options=doughnut_products, height="300px")

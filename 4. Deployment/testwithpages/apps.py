@@ -317,4 +317,31 @@ def plot_stacked_bar(user_id):
         "data": [len(subset[(subset['Category']==item) & (subset['Brand']==brand)]) for brand in brands ],} for item in items],
     }
     return stacked_bar
-    
+
+def plot_radar(user_id):
+    subset = user_df[user_df['User_ID'] == int(user_id)]
+    shop_list = dict(subset['Category'].value_counts())
+    doughnut_products = {
+        "tooltip": {"trigger": "item"},
+        "legend": {"top": "5%", "left": "center"},
+        "series": [
+            {
+                "name": "Brands",
+                "type": "pie",
+                "radius": ["40%", "70%"],
+                "avoidLabelOverlap": False,
+                "itemStyle": {
+                    "borderRadius": 10,
+                    "borderColor": "#fff",
+                    "borderWidth": 2,
+                },
+                "label": {"show": False, "position": "center"},
+                "emphasis": {
+                    "label": {"show": True, "fontSize": "40", "fontWeight": "bold"}
+                },
+                "labelLine": {"show": False},
+                "data": [{"value": int(value), "name": key} for key, value in shop_list.items()],
+            }
+        ],
+    }
+    return doughnut_products
