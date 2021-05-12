@@ -24,6 +24,13 @@ def app():
         return model
     model = weights()
 
+    @st.cache
+    def get_products():
+        products = pd.read_csv('csv/product_db.csv')
+        products = products.loc[:, ~products.columns.str.contains('^Unnamed')]
+        return products
+    products = get_products()
+
         #defining model confidence threshold
     model.conf = 0.2
     #defining different clothes categories for later
@@ -115,7 +122,8 @@ def app():
                         if one_piece_df.loc[0, 'confidence'] > top_df.loc[0, 'confidence']:
                             clothes.append(one_piece_df.loc[0, 'name'])    
                     except:
-                        pass 
+                        pass
+
                     try:
                         if clothes not in one_piece:
                             clothes.append(top_df.loc[0, 'name']) 
@@ -126,66 +134,85 @@ def app():
                             clothes.append(bottom_df.loc[0,'name'])
                     except:
                         pass
+                    try:
+                        if clothes not in top or bottom:
+                            clothes.append(one_piece_df.loc[0, 'name'])
+                    except:
+                        pass
+
                     profile_expander_1 = st.beta_expander('For Men')
                     my_bar.progress(70)
                     with profile_expander_1:
-                        products = pd.read_csv('csv/product_db.csv')
-                        products = products.loc[:, ~products.columns.str.contains('^Unnamed')]
+
+                        products = get_products()
+
                         products = products[products['Gender'] == 'Mens']
 
                         products = products[products['Category'].isin(clothes)]
 
-                        products = products.groupby(['Category','Brand']).apply(lambda x:x.sample(1)).reset_index(drop = True)
+                        if products.empty is True:
 
-                        n_columns = 5
-                        
-                        for item in products['Brand'].unique():
-                            count = 0
-                            st.subheader(item)
-                            item_df = products[products['Brand']==item]
-                            cols = st.beta_columns(n_columns)
-                            for i in range(n_columns):
-                                try:
-                                    df_row = item_df.iloc[count]
-                                    im = Image.open(image_folder + df_row['Image Location'])
-                                    im = im.resize((150, 180))
-                                    cols[i].write(str(df_row['Name']))
-                                    cols[i].image(im)
-                                    count+=1
+                            profile_expander_1.empty()
 
-                                except:
-                                    pass
+                        else:
+                            
+                            products = products.groupby(['Category','Brand']).apply(lambda x:x.sample(1)).reset_index(drop = True)
+
+                            n_columns = 2
+                            
+                            for item in products['Brand'].unique():
+                                count = 0
+                                st.subheader(item)
+                                item_df = products[products['Brand']==item]
+                                cols = st.beta_columns(n_columns)
+                                for i in range(n_columns):
+                                    try:
+                                        df_row = item_df.iloc[count]
+                                        im = Image.open(image_folder + df_row['Image Location'])
+                                        im = im.resize((150, 180))
+                                        cols[i].write(str(df_row['Name']))
+                                        cols[i].image(im)
+                                        count+=1
+
+                                    except:
+                                        pass
+
+
                     my_bar.progress(85)
                     profile_expander_2 = st.beta_expander('For Women')
 
                     with profile_expander_2:
-                        products = pd.read_csv('csv/product_db.csv')
-                        products = products.loc[:, ~products.columns.str.contains('^Unnamed')]
-
+                        products = get_products()
+                         
                         products = products[products['Gender'] == 'Womens']
+                    
 
                         products = products[products['Category'].isin(clothes)]
 
-                        products = products.groupby(['Category','Brand']).apply(lambda x:x.sample(2)).reset_index(drop = True)
+                        if products.empty is True:
+                            profile_expander_2.empty()
+                        else:
+                            products = products.groupby(['Category','Brand']).apply(lambda x:x.sample(1)).reset_index(drop = True)
 
-                        n_columns = 5
-                        
-                        for item in products['Brand'].unique():
-                            count = 0
-                            st.subheader(item)
-                            item_df = products[products['Brand']==item]
-                            cols = st.beta_columns(n_columns)
-                            for i in range(n_columns):
-                                try:
-                                    df_row = item_df.iloc[count]
-                                    im = Image.open(image_folder + df_row['Image Location'])
-                                    im = im.resize((150, 180))
-                                    cols[i].write(str(df_row['Name']))
-                                    cols[i].image(im)
-                                    count+=1
+                            n_columns = 2
+                            
+                            for item in products['Brand'].unique():
+                                count = 0
+                                st.subheader(item)
+                                item_df = products[products['Brand']==item]
+                                cols = st.beta_columns(n_columns)
+                                for i in range(n_columns):
+                                    try:
+                                        df_row = item_df.iloc[count]
+                                        im = Image.open(image_folder + df_row['Image Location'])
+                                        im = im.resize((150, 180))
+                                        cols[i].write(str(df_row['Name']))
+                                        cols[i].image(im)
+                                        count+=1
 
-                                except:
-                                    pass
+                                    except:
+                                        pass
+
                     my_bar.progress(100)
                     time.sleep(2)
                     my_bar.empty()
@@ -288,7 +315,7 @@ def app():
                 clothes.append(one_piece_df.loc[0, 'name'])    
         except:
             pass
-        #if clothes list already has one_piece, it passes
+
         try:
             if clothes not in one_piece:
                 clothes.append(top_df.loc[0, 'name']) 
@@ -299,70 +326,85 @@ def app():
                 clothes.append(bottom_df.loc[0,'name'])
         except:
             pass
+        try:
+            if clothes not in top or bottom:
+                clothes.append(one_piece_df.loc[0, 'name'])
+        except:
+            pass
 
         my_bar.progress(50)
 
         profile_expander_1 = st.beta_expander('For Men')
 
         with profile_expander_1:
-            products = pd.read_csv('csv/product_db.csv')
-            products = products.loc[:, ~products.columns.str.contains('^Unnamed')]
+            
+            products = get_products()
+
             products = products[products['Gender'] == 'Mens']
 
             products = products[products['Category'].isin(clothes)]
 
-            products = products.groupby(['Category','Brand']).apply(lambda x:x.sample(2)).reset_index(drop = True)
+            if products.empty is True:
 
-            n_columns = 5
-            
-            for item in products['Brand'].unique():
-                count = 0
-                st.subheader(item)
-                item_df = products[products['Brand']==item]
-                cols = st.beta_columns(n_columns)
-                for i in range(n_columns):
-                    try:
-                        df_row = item_df.iloc[count]
-                        im = Image.open(image_folder + df_row['Image Location'])
-                        im = im.resize((150, 180))
-                        cols[i].write(str(df_row['Name']))
-                        cols[i].image(im)
-                        count+=1
+                profile_expander_1.empty()
 
-                    except:
-                        pass
+            else:
+                
+                products = products.groupby(['Category','Brand']).apply(lambda x:x.sample(1)).reset_index(drop = True)
+
+                n_columns = 2
+                
+                for item in products['Brand'].unique():
+                    count = 0
+                    st.subheader(item)
+                    item_df = products[products['Brand']==item]
+                    cols = st.beta_columns(n_columns)
+                    for i in range(n_columns):
+                        try:
+                            df_row = item_df.iloc[count]
+                            im = Image.open(image_folder + df_row['Image Location'])
+                            im = im.resize((150, 180))
+                            cols[i].write(str(df_row['Name']))
+                            cols[i].image(im)
+                            count+=1
+
+                        except:
+                            pass
         my_bar.progress(75)
         profile_expander_2 = st.beta_expander('For Women')
 
         with profile_expander_2:
-            products = pd.read_csv('csv/product_db.csv')
 
-            products = products.loc[:, ~products.columns.str.contains('^Unnamed')]
-
+            products = get_products()
+             
             products = products[products['Gender'] == 'Womens']
+        
 
             products = products[products['Category'].isin(clothes)]
 
-            products = products.groupby(['Category','Brand']).apply(lambda x:x.sample(1)).reset_index(drop = True)
+            if products.empty is True:
+                profile_expander_2.empty()
+            else:
+                products = products.groupby(['Category','Brand']).apply(lambda x:x.sample(1)).reset_index(drop = True)
 
-            n_columns = 5
-            
-            for item in products['Brand'].unique():
-                count = 0
-                st.subheader(item)
-                item_df = products[products['Brand']==item]
-                cols = st.beta_columns(n_columns)
-                for i in range(n_columns):
-                    try:
-                        df_row = item_df.iloc[count]
-                        im = Image.open(image_folder + df_row['Image Location'])
-                        im = im.resize((150, 180))
-                        cols[i].write(str(df_row['Name']))
-                        cols[i].image(im)
-                        count+=1
+                n_columns = 2
+                
+                for item in products['Brand'].unique():
+                    count = 0
+                    st.subheader(item)
+                    item_df = products[products['Brand']==item]
+                    cols = st.beta_columns(n_columns)
+                    for i in range(n_columns):
+                        try:
+                            df_row = item_df.iloc[count]
+                            im = Image.open(image_folder + df_row['Image Location'])
+                            im = im.resize((150, 180))
+                            cols[i].write(str(df_row['Name']))
+                            cols[i].image(im)
+                            count+=1
 
-                    except:
-                        pass
+                        except:
+                            pass
         my_bar.progress(100)
         time.sleep(2)
         my_bar.empty()
