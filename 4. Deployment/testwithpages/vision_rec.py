@@ -113,7 +113,7 @@ def app():
 
                     try:
                         if one_piece_df.loc[0, 'confidence'] > top_df.loc[0, 'confidence']:
-                            clothes.append(one_piece_df.loc[0, 'confidence'])    
+                            clothes.append(one_piece_df.loc[0, 'name'])    
                     except:
                         pass 
                     try:
@@ -286,7 +286,7 @@ def app():
 
         try:
             if one_piece_df.loc[0, 'confidence'] > top_df.loc[0, 'confidence']:
-                clothes.append(one_piece_df.loc[0, 'confidence'])    
+                clothes.append(one_piece_df.loc[0, 'name'])    
         except:
             pass 
         try:
