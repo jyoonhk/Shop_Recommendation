@@ -9,6 +9,8 @@ def app():
     # Shop Recommendation System 
     # 
     """)
+    st.subheader('Recommendation Engine using database with registered users')
+    st.write('Enter user ID and fields to access recommendations')
 
     #Run to store cached data
     @st.cache
