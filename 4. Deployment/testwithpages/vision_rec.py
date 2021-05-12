@@ -160,16 +160,15 @@ def app():
 
                     with profile_expander_2:
                         products = pd.read_csv('csv/product_db.csv')
-
                         products = products.loc[:, ~products.columns.str.contains('^Unnamed')]
 
                         products = products[products['Gender'] == 'Womens']
 
                         products = products[products['Category'].isin(clothes)]
 
-                        products = products.groupby(['Category','Brand']).apply(lambda x:x.sample(1)).reset_index(drop = True)
+                        products = products.groupby(['Category','Brand']).apply(lambda x:x.sample(2)).reset_index(drop = True)
 
-                        n_columns = 2
+                        n_columns = 5
                         
                         for item in products['Brand'].unique():
                             count = 0
@@ -282,13 +281,14 @@ def app():
         one_piece_df = one_piece_df.sort_values(by='confidence', ascending=False).head(1).reset_index()
         my_bar.progress(30)
         #append necessary clothes categories into list
-
-
+        #looking at confidence value top/one-piece and adding it into list if one-piece confidence is higher
+        #otherwise pass
         try:
             if one_piece_df.loc[0, 'confidence'] > top_df.loc[0, 'confidence']:
                 clothes.append(one_piece_df.loc[0, 'name'])    
         except:
-            pass 
+            pass
+        #if clothes list already has one_piece, it passes
         try:
             if clothes not in one_piece:
                 clothes.append(top_df.loc[0, 'name']) 
@@ -311,7 +311,7 @@ def app():
 
             products = products[products['Category'].isin(clothes)]
 
-            products = products.groupby(['Category','Brand']).apply(lambda x:x.sample(1)).reset_index(drop = True)
+            products = products.groupby(['Category','Brand']).apply(lambda x:x.sample(2)).reset_index(drop = True)
 
             n_columns = 5
             
@@ -345,7 +345,7 @@ def app():
 
             products = products.groupby(['Category','Brand']).apply(lambda x:x.sample(1)).reset_index(drop = True)
 
-            n_columns = 2
+            n_columns = 5
             
             for item in products['Brand'].unique():
                 count = 0
