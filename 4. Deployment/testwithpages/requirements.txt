@@ -1,0 +1,10 @@
+streamlit
+pandas
+numpy
+seaborn
+pillow
+torch
+torchvision
+opencv-python
+matplotlib.pyplot
+streamlit_echarts
