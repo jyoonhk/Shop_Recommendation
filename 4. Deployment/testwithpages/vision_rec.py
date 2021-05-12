@@ -18,21 +18,22 @@ def app():
     path = 'customer_img'
 
     #fitting local model using yolov5 github files
-    model = torch.hub.load('ultralytics/yolov5', 'custom', 'model_weight/best.pt', force_reload=True)
+    @st.cache
+    def weights():
+        model = torch.hub.load('ultralytics/yolov5', 'custom', 'model_weight/best.pt', force_reload=True)
+        return model
+    model = weights()
 
-    #defining model confidence threshold
+        #defining model confidence threshold
     model.conf = 0.2
     #defining different clothes categories for later
     top = ['Blouses', 'Jackets_Coats','Jumpers', 'Polos', 'Shirts', 'T-Shirts']
     bottom = ['Jeans', 'Shorts', 'Skirts', 'Trousers']
     one_piece = ['Dresses', 'Suits']
     #clothes categories for later
-
-    st.header("Vision Recommendation")
-
     FRAME_WINDOW = st.image([])
     #Set Video Resolution
-    cap = cv2.VideoCapture(2)
+    cap = cv2.VideoCapture(0)
     cap.set(3, 1280)
     cap.set(4, 720)
 
@@ -42,7 +43,12 @@ def app():
     TIMER = int(10)
     path = 'customer_img'
 
+
+
+    st.header("Vision Recommendation")
+
     st.subheader('Upload your image')
+
     select = st.selectbox('Select how to load image:', ['','Load Image', 'Webcam'])
 
     if select == 'Load Image':
@@ -55,6 +61,11 @@ def app():
                     f.write(user_image.getbuffer())
                     st.text('Image saved!')
 
+                    my_bar = st.progress(0)
+
+                    my_bar.progress(2)
+
+                    
                     clothes = []
 
 
@@ -67,10 +78,15 @@ def app():
                     enhancer = ImageEnhance.Brightness(image)
                     enhancer.enhance(1.2).save(path + '/customer_new.jpg')
 
+                    my_bar.progress(15)
+
                     #calculating predictions
+                    model = weights()
                     results = model(path + '/customer_new.jpg', augment=True, size=900)
                     #not sure how to change path for save - other than changing os and changing back
                     results.save()
+
+                    
 
                     #putting predictions in dataframe
                     df = results.pandas().xyxy[0]
@@ -82,6 +98,8 @@ def app():
                     top_df = top_df.loc[top_df.groupby('name')['confidence'].idxmax()]
                     top_df = top_df.sort_values(by='confidence', ascending=False).head(1).reset_index()
 
+                    my_bar.progress(30)
+
                     bottom_df = df[df['name'].isin(bottom)]
                     bottom_df = bottom_df.loc[bottom_df.groupby('name')['confidence'].idxmax()]
                     bottom_df = bottom_df.sort_values(by='confidence', ascending=False).head(1).reset_index()
@@ -91,7 +109,7 @@ def app():
                     one_piece_df = one_piece_df.sort_values(by='confidence', ascending=False).head(1).reset_index()
 
                     #append necessary clothes categories into list
-
+                    my_bar.progress(45)
 
                     try:
                         if one_piece_df.loc[0, 'confidence'] > top_df.loc[0, 'confidence']:
@@ -108,7 +126,7 @@ def app():
                         pass
                         print("Did not detect Correctly - Try Again")
                     profile_expander_1 = st.beta_expander('For Men')
-
+                    my_bar.progress(70)
                     with profile_expander_1:
                         products = pd.read_csv('csv/product_db.csv')
                         products = products.loc[:, ~products.columns.str.contains('^Unnamed')]
@@ -136,7 +154,7 @@ def app():
 
                                 except:
                                     pass
-
+                    my_bar.progress(85)
                     profile_expander_2 = st.beta_expander('For Women')
 
                     with profile_expander_2:
@@ -168,7 +186,9 @@ def app():
 
                                 except:
                                     pass
-
+                    my_bar.progress(100)
+                    time.sleep(2)
+                    my_bar.empty()
     # button = st.button("Recommend Me Shops")
     # # x=100
     # # y=50
