@@ -13,7 +13,8 @@ def app():
     # Clothes Detection Engine 
     # 
     """)
-
+    st.header("Vision Recommendation")
+    
     st.markdown("![Alt Text](https://thumbs.gfycat.com/IllfatedPaltryBluebottlejellyfish-size_restricted.gif)")
 
     image_folder = "Data/"
