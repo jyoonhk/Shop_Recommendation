@@ -14,7 +14,7 @@ def app():
     # 
     """)
     st.header("Vision Recommendation")
-    
+
     st.markdown("![Alt Text](https://thumbs.gfycat.com/IllfatedPaltryBluebottlejellyfish-size_restricted.gif)")
 
     image_folder = "Data/"
@@ -59,7 +59,7 @@ def app():
 
     st.subheader('Choose Your Method')
 
-    select = st.selectbox('Select how to load image:', ['Select:','Upload Image', 'Webcam'])
+    select = st.selectbox('Select how to load image:', ['','Upload Image', 'Webcam'])
 
     if select == 'Upload Image':
         user_image = st.file_uploader("Please upload your image",type=['jpg','png','jpeg'])
