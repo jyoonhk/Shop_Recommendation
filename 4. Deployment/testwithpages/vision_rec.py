@@ -62,6 +62,7 @@ def app():
         user_image = st.file_uploader("Please upload an image of your face",type=['jpg','png','jpeg'])
         if user_image is not None:
             img = Image.open(user_image)
+            st.image(img, width = 300)
             if st.button('Save Picture'):
                 
                 with open(os.path.join(path, 'customer.jpg'),"wb") as f:
@@ -88,7 +89,7 @@ def app():
                     my_bar.progress(15)
 
                     #calculating predictions
-                    model = weights()
+                    
                     results = model(path + '/customer_new.jpg', augment=True, size=900)
                     #not sure how to change path for save - other than changing os and changing back
                     results.save()
