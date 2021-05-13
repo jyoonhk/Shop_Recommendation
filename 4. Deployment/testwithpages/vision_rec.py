@@ -42,14 +42,14 @@ def app():
     #clothes categories for later
     FRAME_WINDOW = st.image([])
     #Set Video Resolution
-    cap = cv2.VideoCapture(0)
+    cap = cv2.VideoCapture(1)
     cap.set(3, 1280)
     cap.set(4, 720)
 
     # img = cv2.imread('outline.png')
     # img_height, img_width, _ = img.shape
     #Set Timer
-    TIMER = int(10)
+    TIMER = int(3)
     path = 'customer_img'
 
 
