@@ -13,7 +13,9 @@ def app():
     # Clothes Detection Engine 
     # 
     """)
-    
+
+    st.markdown("![Alt Text](https://thumbs.gfycat.com/IllfatedPaltryBluebottlejellyfish-size_restricted.gif)")
+
     image_folder = "Data/"
     path = 'customer_img'
 
@@ -54,19 +56,20 @@ def app():
 
     st.header("Vision Recommendation")
 
-    st.subheader('Upload your image')
+    st.subheader('Choose Your Method')
 
-    select = st.selectbox('Select how to load image:', ['','Load Image', 'Webcam'])
+    select = st.selectbox('Select how to load image:', ['Select:','Upload Image', 'Webcam'])
 
-    if select == 'Load Image':
-        user_image = st.file_uploader("Please upload an image of your face",type=['jpg','png','jpeg'])
+    if select == 'Upload Image':
+        user_image = st.file_uploader("Please upload your image",type=['jpg','png','jpeg'])
         if user_image is not None:
             img = Image.open(user_image)
-            st.image(img, width = 300)
-            if st.button('Save Picture'):
+            if st.button('Save and Recommend'):
                 
                 with open(os.path.join(path, 'customer.jpg'),"wb") as f:
                     f.write(user_image.getbuffer())
+
+
                     st.text('Image saved!')
 
                     my_bar = st.progress(0)
@@ -75,6 +78,7 @@ def app():
 
                     
                     clothes = []
+
 
 
 
@@ -140,6 +144,14 @@ def app():
                             clothes.append(one_piece_df.loc[0, 'name'])
                     except:
                         pass
+
+                    col1, col2 = st.beta_columns(2)
+                    col1.header("Your Image")
+                    col1.image(img, width = 300)
+
+                    col2.header("Your Predicted Clothes")
+                    for i in clothes:
+                        col2.write(i)
 
                     profile_expander_1 = st.beta_expander('For Men')
                     my_bar.progress(70)
@@ -332,6 +344,14 @@ def app():
                 clothes.append(one_piece_df.loc[0, 'name'])
         except:
             pass
+
+        col1, col2 = st.beta_columns(2)
+        col1.header("Your Image")
+        col1.image(image, width = 300)
+
+        col2.header("Your Predicted Clothes")
+        for i in clothes:
+            col2.write(i)
 
         my_bar.progress(50)
 
