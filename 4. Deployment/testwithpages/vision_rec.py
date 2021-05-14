@@ -154,6 +154,8 @@ def app():
                     for i in clothes:
                         col2.write(i)
 
+                    
+
                     profile_expander_1 = st.beta_expander('For Men')
                     my_bar.progress(70)
                     with profile_expander_1:
@@ -230,6 +232,8 @@ def app():
                     my_bar.progress(100)
                     time.sleep(2)
                     my_bar.empty()
+
+
     # button = st.button("Recommend Me Shops")
     # # x=100
     # # y=50
@@ -277,7 +281,6 @@ def app():
             # Save the frame
             cv2.imwrite(os.path.join(path, 'customer.jpg'), frame)
 
-            st.write("Done")
             
             time.sleep(2)
 
