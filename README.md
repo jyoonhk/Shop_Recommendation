@@ -55,37 +55,37 @@ ShopRec aims to **personalise** customer retail shopping experience, and revital
  * User histories were generated using these shopping profiles and sampling the product database based on the product/shop weights. Deviations were included to prevent              overfitting to the original shopping profiles.
 ![Distribution](Deployment/images/distribution.jpg)
 
-#### 3. Model Training:
+### 3. Model Training:
 - 3a. Overview:
- * Yolov5 was used to train our image detection model, after several iterations the final model parameters were:
- * Model: Yolov5L
- * Train/Test/Val: 80/10/10
- * Epochs: 30
- * Batch size: 16
+  * Yolov5 was used to train our image detection model, after several iterations the final model parameters were:
+  * Model: Yolov5L
+  * Train/Test/Val: 80/10/10
+  * Epochs: 30
+  * Batch size: 16
 - 3b. Model Training Process:
- * Data preparation
- * Prepare project folder structure
- * Define ‘YAML’ files to specify: location of data, names and number of classes
- * Run model training
- * Export weights for later use
+  * Data preparation
+  * Prepare project folder structure
+  * Define ‘YAML’ files to specify: location of data, names and number of classes
+  * Run model training
+  * Export weights for later use
 - 3c. Confusion Matrix:
- * Total average precision: 69%, recall: 73%
- * Confusion Matrix shows all categories generally predict well
+  * Total average precision: 69%, recall: 73%
+  * Confusion Matrix shows all categories generally predict well
 ![Confusion Matrix](Deployment/images/confusion_matrix.jpg)
 - 3d. F1 Curve
  * The F1 curve shows the F1 score across different confidence levels, i.e. the Precision / Recall trade off in our model.
  * Using a 42% confidence for predictions in our model would give the best F1 score of 69%.
 ![F1 Curve](Deployment/images/f1.jpg)
 
-#### 4. Recommendation System:
+### 4. Recommendation System:
 - 4a. Nearest Neighbours:
- * For user with known shopping histories, Product and Shop weightings were calculated based on Product and Shop weights.
+  * For user with known shopping histories, Product and Shop weightings were calculated based on Product and Shop weights.
 
- * Product weighting measures the proportion of each clothing type purchased; Shop weightings measures the proportion of clothes purchased at each shop.
+  * Product weighting measures the proportion of each clothing type purchased; Shop weightings measures the proportion of clothes purchased at each shop.
 
- * Nearest Neighbours were found based on Euclidean distance to both these weightings. A static distance matrix of the distance between all known users was calculated and          stored, which allowed faster calculations of nearest neighbours.
+  * Nearest Neighbours were found based on Euclidean distance to both these weightings. A static distance matrix of the distance between all known users was calculated and          stored, which allowed faster calculations of nearest neighbours.
 
- * For illustration, User 1 and 193 are nearest neighbours as they both have very similar Product and Shop profiles.
+  * For illustration, User 1 and 193 are nearest neighbours as they both have very similar Product and Shop profiles.
 ![distribution2](Deployment/images/distribution2.jpg)
 
 - 4b. Recommendations:
@@ -98,10 +98,10 @@ ShopRec aims to **personalise** customer retail shopping experience, and revital
    Users are also able to filter their recommendation e.g. by specific stores, and/or by product type.
 ![Recommendation](Deployment/images/rec_ex1.jpg)
 
-#### 5. Deployment
+### 5. Deployment
 5a. Streamlit:
- * A proof of concept app was deployed in Streamlit due to ease of implementation.
- * This demonstrates functionality of image detection and recommendation system
+  * A proof of concept app was deployed in Streamlit due to ease of implementation.
+  * This demonstrates functionality of image detection and recommendation system
 ### Registered Users:
 ![Registered](Deployment/images/Recommendation_video.gif)
 
