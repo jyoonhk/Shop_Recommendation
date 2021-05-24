@@ -4,74 +4,123 @@
 
 ShopRec is a **Computer Vision recommendation system**, used for in store personalised clothing recommendations.
 
-ShopRec aims to **personalise** customer retail shopping experience, and revitalise in store shopping.
+ShopRec aims to **personalise** customer retail shopping experience, and revitalise in-store shopping.
 
-
-### Business Case:
-ShopRec aims to provide benefits to businesses:
 - Undiscovered Opportunity:
   * Lack of multi brand / shop recommendation systems.
   * Gap in the market for computer vision.
 - Multiple Benefits: 
   * Customers, Shops and Shopping Centres will all benefit from innovation.
 
+### Business Case:
+
+- Customers:
+  * Personalised recommendations based on their shopping preferences.
+  * Tailored vouchers and discount offers to spend in store.
+- Shops:
+  * Maintain and enhance customer loyalty.
+  * Attract customers from complementary / partner stores.
+- Shopping Centres:
+  * Opportunities to attract more footfall by offering unique experiences
+  * Increase synergy across complementary stores.
+
 
 ### Model Overview:
-3 facial recognition models were tested and implemented using external data and our user data. The models are: User Detection, Emotion Detection, and Gender/Age Detection.
-
-These are a mixture of pretrained models e.g. OpenCV and face_recognition libraries, and a Deep Learning CNN model we have trained.
-
-Each model follows a similar process: 
-- Detect a face from an image
-- Process this face through a feature model (e.g. user name, emotions, gender/age)
-- Overlay the model outputs on the original image
-
-More details are given below.
-![Process](/Images/process1.jpg)
-
-#### 1. User Detector:
-```
-Purpose: Security & Law Enforcement, Mobile device security, Tracking attendance.
-```
-A pretrained facial recognition model from the OpenCV face_recognition library was used to detect users from the images uploaded to our internal database. 
-
-This model will identify unauthorised faces that differ significantly from users in our database. Users that are recognised by the model will be labelled in green and their movements logged for attendance tracking.
+![Model Architecture](/Deployment/images/architecture.jpg)
 
 
-#### 2. Emotion Detector:
-```
-Purpose: Security & Law Enforcement.
-```
-A Convolutional Neural Network was trained to detect facial emotions by using a Kaggle dataset with over 35,000 images of various facial emotions. 
+### Model Development:
+![Model Overview](/Deployment/images/overview.jpg)
 
-The CNN model was trained to detect: Anger, Disgust, Fear, Happiness, Sadness, Surprise, and Neutral expressions.
+####1. Webscraping:
+- 1a. Webscraping:
+ * Clothing images scraped from various retailers e.g. Nike, Ralph Lauren, Uniqlo, Calvin Klein, Max & Co, for a diverse range of male/female clothing styles. 
+- 1b. Image Labeling:
+ * Images were stored, bounding boxes were drawn to label categories for use in model training.
+![Labeling](Deployment/images/labeling.jpg)
+- 1c. Product and Shops
+ * 12 categories of clothing, 13 stores, c. 6000 images in total.
+![Chart](Deployment/images/chart.jpg)
 
-![Distribution of emotions in training dataset](/Images/emotions1.jpg)
-![Accuracy/Loss - Train v Test against Epoch](/Images/emotions3.jpg)
+####2. Data Processing:
+2a. Product Database:
+ * Webscraped data was cleaned e.g. similar clothing types were mapped to a consistent category
+ * All scraped images were saved in a product database, with characteristics recorded (e.g. brand name, clothing type, gender).
+![Process](Deployment/images/data_process.jpg)
 
+2b. User Shopping History Generation:
+ * Multiple shopping personas were created to represent the distribution of clothing items purchased by customers. An example of “Men’s Casual” and “Men’s Smart” personas are      shown below.
+ * E.g. a user could shop at 50% Nike, 30% Uniqlo, 20% Fred Perry, and buying 60% T-shirts, 20% trousers, 20% jumpers.
+ * User histories were generated using these shopping profiles and sampling the product database based on the product/shop weights. Deviations were included to prevent              overfitting to the original shopping profiles.
+![Distribution](Deployment/images/distribution.jpg)
 
-#### 3. Gender and Age Detector:
-```
-Purpose: Smart Advertisement, Tracking attendance.
-```
-The model for age and gender was pre-trained from Adience data set with 26,580 photos, while the face detection model is from OpenCV's DNN module.
-- The Gender has 2 classes: Male and Female
-- Age is divided between 8 classes: 0 – 2, 4 – 6, 8 – 12, 15 – 20, 25 – 32, 38 – 43, 48 – 53, 60 – 100
+####3. Model Training:
+- 3a. Overview:
+ * Yolov5 was used to train our image detection model, after several iterations the final model parameters were:
+ * Model: Yolov5L
+ * Train/Test/Val: 80/10/10
+ * Epochs: 30
+ * Batch size: 16
+- 3b. Model Training Process:
+ * Data preparation
+ * Prepare project folder structure
+ * Define ‘YAML’ files to specify: location of data, names and number of classes
+ * Run model training
+ * Export weights for later use
+- 3c. Confusion Matrix:
+ * Total average precision: 69%, recall: 73%
+ * Confusion Matrix shows all categories generally predict well
+![Confusion Matrix](Deployment/images/confusion_matrix)
+- 3d. F1 Curve
+ * The F1 curve shows the F1 score across different confidence levels, i.e. the Precision / Recall trade off in our model.
+ * Using a 42% confidence for predictions in our model would give the best F1 score of 69%.
+![F1 Curve](Deployment/images/f1)
 
-![Distribution of Age/Gender](/Images/agegender2.jpg)
+####4. Recommendation System:
+- 4a. Nearest Neighbours:
+ * For user with known shopping histories, Product and Shop weightings were calculated based on Product and Shop weights.
 
+ * Product weighting measures the proportion of each clothing type purchased; Shop weightings measures the proportion of clothes purchased at each shop.
 
-#### *Conclusions*
-This project has demonstrated some uses of facial recognition technology, within Security & Law Enforcement, attendance tracking and advertising. 
+ * Nearest Neighbours were found based on Euclidean distance to both these weightings. A static distance matrix of the distance between all known users was calculated and          stored, which allowed faster calculations of nearest neighbours.
 
-Further enhancements could include:
+ * For illustration, User 1 and 193 are nearest neighbours as they both have very similar Product and Shop profiles.
+![distribution2](Deployment/images/distribution2)
 
-- Enriching the original datasets to better differentiate between similar users.
-- Aggregating our 3 models into 1 model to simultaneously detect authorised users, emotions, and gender/age.
-- Enhance model to differentiate between real people and pictures/images of people.
+- 4b. Recommendations:
+   Once nearest neighbours are established for a user, the recommendation system works as follows:
 
-Concerns on Facial Recognition include:
+   All items bought by nearest neighbours are pooled together
+   Items already purchased by the user are removed
+   Products bought by nearest neighbours are ranked and recommended based on popularity.
 
-- Privacy / Misuse of Facial Data: The technology could enable mass surveillance of all people; there is no widespread legislation of facial recognition technology.
-- Security Breaches: Improper storage of user images could expose users to privacy breaches / security threats / stolen identity.
-- Bias and Inaccuracies: Algorithms trained on racially biased datasets could lead to misidentifying and/or discrimination of people from minority ethnic backgrounds.
+   Users are also able to filter their recommendation e.g. by specific stores, and/or by product type.
+![Recommendation](Deployment/images/rec_ex1)
+
+####5. Deployment
+5a. Streamlit:
+ * A proof of concept app was deployed in Streamlit due to ease of implementation.
+ * This demonstrates functionality of image detection and recommendation system
+
+![Registered](Deployment/images/Recommendation_video)
+![Upload](Deployment/images/Load_image_Demo)
+![Webcam](Deployment/images/vision_recommendation)
+
+### Future Enhancements:
+- Feature Extractions:
+
+ * Enhance image recognition model to detect and recognise clothing features e.g. style, patterns. 
+
+ * Initial analysis shows common features across similar items.
+
+- Expand Data and Product Range:
+ * Add more stores to broaden inventory. Include accessories and non-fashion items.
+
+ * Combine with real life consumer data.
+
+- Refine Deployment:
+
+ * Include additional user interface features e.g. rewards scheme, user login, customer product ratings, links to websites
+
+ * Consider use Django, Kivy, pyQT to deploy app.
+
