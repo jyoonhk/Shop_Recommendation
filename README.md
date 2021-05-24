@@ -32,7 +32,7 @@ ShopRec aims to **personalise** customer retail shopping experience, and revital
 ### Model Development:
 ![Model Overview](/Deployment/images/overview.jpg)
 
-####1. Webscraping:
+#### 1. Webscraping:
 - 1a. Webscraping:
  * Clothing images scraped from various retailers e.g. Nike, Ralph Lauren, Uniqlo, Calvin Klein, Max & Co, for a diverse range of male/female clothing styles. 
 - 1b. Image Labeling:
@@ -55,7 +55,7 @@ ShopRec aims to **personalise** customer retail shopping experience, and revital
  * User histories were generated using these shopping profiles and sampling the product database based on the product/shop weights. Deviations were included to prevent              overfitting to the original shopping profiles.
 ![Distribution](Deployment/images/distribution.jpg)
 
-####3. Model Training:
+#### 3. Model Training:
 - 3a. Overview:
  * Yolov5 was used to train our image detection model, after several iterations the final model parameters were:
  * Model: Yolov5L
@@ -77,7 +77,7 @@ ShopRec aims to **personalise** customer retail shopping experience, and revital
  * Using a 42% confidence for predictions in our model would give the best F1 score of 69%.
 ![F1 Curve](Deployment/images/f1.jpg)
 
-####4. Recommendation System:
+#### 4. Recommendation System:
 - 4a. Nearest Neighbours:
  * For user with known shopping histories, Product and Shop weightings were calculated based on Product and Shop weights.
 
@@ -98,13 +98,17 @@ ShopRec aims to **personalise** customer retail shopping experience, and revital
    Users are also able to filter their recommendation e.g. by specific stores, and/or by product type.
 ![Recommendation](Deployment/images/rec_ex1.jpg)
 
-####5. Deployment
+#### 5. Deployment
 5a. Streamlit:
  * A proof of concept app was deployed in Streamlit due to ease of implementation.
  * This demonstrates functionality of image detection and recommendation system
-
+### Registered Users:
 ![Registered](Deployment/images/Recommendation_video.gif)
+
+### Uploading image profile:
 ![Upload](Deployment/images/Load_image_Demo.gif)
+
+### Real-Time profile:
 ![Webcam](Deployment/images/vision_recommendation.gif)
 
 ### Future Enhancements:
