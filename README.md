@@ -76,8 +76,8 @@ ShopRec aims to **personalise** customer retail shopping experience, and revital
   * Confusion Matrix shows all categories generally predict well
 ![Confusion Matrix](Deployment/images/confusion_matrix.jpg)
 - 3d. F1 Curve
- * The F1 curve shows the F1 score across different confidence levels, i.e. the Precision / Recall trade off in our model.
- * Using a 42% confidence for predictions in our model would give the best F1 score of 69%.
+  * The F1 curve shows the F1 score across different confidence levels, i.e. the Precision / Recall trade off in our model.
+  * Using a 42% confidence for predictions in our model would give the best F1 score of 69%.
 ![F1 Curve](Deployment/images/f1.jpg)
 
 ### 4. Recommendation System:
@@ -92,17 +92,15 @@ ShopRec aims to **personalise** customer retail shopping experience, and revital
 ![distribution2](Deployment/images/distribution2.jpg)
 
 - 4b. Recommendations:
-   Once nearest neighbours are established for a user, the recommendation system works as follows:
-
-   All items bought by nearest neighbours are pooled together
-   Items already purchased by the user are removed
-   Products bought by nearest neighbours are ranked and recommended based on popularity.
-
-   Users are also able to filter their recommendation e.g. by specific stores, and/or by product type.
+   * Once nearest neighbours are established for a user, the recommendation system works as follows:
+   * All items bought by nearest neighbours are pooled together
+   * Items already purchased by the user are removed
+   * Products bought by nearest neighbours are ranked and recommended based on popularity.
+   * Users are also able to filter their recommendation e.g. by specific stores, and/or by product type.
 ![Recommendation](Deployment/images/rec_ex1.jpg)
 
 ### 5. Deployment
-5a. Streamlit:
+- 5a. Streamlit:
   * A proof of concept app was deployed in Streamlit due to ease of implementation.
   * This demonstrates functionality of image detection and recommendation system
 ### Registered Users:
