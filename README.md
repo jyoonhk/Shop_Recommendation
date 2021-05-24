@@ -41,7 +41,10 @@ ShopRec aims to **personalise** customer retail shopping experience, and revital
 - 1c. Product and Shops
   * 12 categories of clothing, 13 stores, c. 6000 images in total.
 
-![Chart](Deployment/images/chart.jpg)
+<p align="center">
+  <img src="Deployment/images/chart.jpg">
+</p>
+<!-- ![Chart](Deployment/images/chart.jpg) -->
 
 ### 2. Data Processing:
 - 2a. Product Database:
