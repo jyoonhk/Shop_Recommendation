@@ -32,27 +32,27 @@ ShopRec aims to **personalise** customer retail shopping experience, and revital
 ### Model Development:
 ![Model Overview](/Deployment/images/overview.jpg)
 
-#### 1. Webscraping:
+### 1. Webscraping:
 - 1a. Webscraping:
- * Clothing images scraped from various retailers e.g. Nike, Ralph Lauren, Uniqlo, Calvin Klein, Max & Co, for a diverse range of male/female clothing styles. 
+  * Clothing images scraped from various retailers e.g. Nike, Ralph Lauren, Uniqlo, Calvin Klein, Max & Co, for a diverse range of male/female clothing styles. 
 - 1b. Image Labeling:
- * Images were stored, bounding boxes were drawn to label categories for use in model training.
+  * Images were stored, bounding boxes were drawn to label categories for use in model training.
 ![Labeling](Deployment/images/labeling.jpg)
 - 1c. Product and Shops
- * 12 categories of clothing, 13 stores, c. 6000 images in total.
+  * 12 categories of clothing, 13 stores, c. 6000 images in total.
 
 ![Chart](Deployment/images/chart.jpg)
 
-####2. Data Processing:
+### 2. Data Processing:
 2a. Product Database:
- * Webscraped data was cleaned e.g. similar clothing types were mapped to a consistent category
- * All scraped images were saved in a product database, with characteristics recorded (e.g. brand name, clothing type, gender).
+  * Webscraped data was cleaned e.g. similar clothing types were mapped to a consistent category
+  * All scraped images were saved in a product database, with characteristics recorded (e.g. brand name, clothing type, gender).
 ![Process](Deployment/images/data_process.jpg)
 
 2b. User Shopping History Generation:
- * Multiple shopping personas were created to represent the distribution of clothing items purchased by customers. An example of “Men’s Casual” and “Men’s Smart” personas are      shown below.
- * E.g. a user could shop at 50% Nike, 30% Uniqlo, 20% Fred Perry, and buying 60% T-shirts, 20% trousers, 20% jumpers.
- * User histories were generated using these shopping profiles and sampling the product database based on the product/shop weights. Deviations were included to prevent              overfitting to the original shopping profiles.
+  * Multiple shopping personas were created to represent the distribution of clothing items purchased by customers. An example of “Men’s Casual” and “Men’s Smart” personas are      shown below.
+  * E.g. a user could shop at 50% Nike, 30% Uniqlo, 20% Fred Perry, and buying 60% T-shirts, 20% trousers, 20% jumpers.
+  * User histories were generated using these shopping profiles and sampling the product database based on the product/shop weights. Deviations were included to prevent              overfitting to the original shopping profiles.
 ![Distribution](Deployment/images/distribution.jpg)
 
 ### 3. Model Training:
@@ -113,19 +113,12 @@ ShopRec aims to **personalise** customer retail shopping experience, and revital
 
 ### Future Enhancements:
 - Feature Extractions:
-
- * Enhance image recognition model to detect and recognise clothing features e.g. style, patterns. 
-
- * Initial analysis shows common features across similar items.
-
+  * Enhance image recognition model to detect and recognise clothing features e.g. style, patterns. 
+  * Initial analysis shows common features across similar items.
 - Expand Data and Product Range:
- * Add more stores to broaden inventory. Include accessories and non-fashion items.
-
- * Combine with real life consumer data.
-
+  * Add more stores to broaden inventory. Include accessories and non-fashion items.
+  * Combine with real life consumer data.
 - Refine Deployment:
-
- * Include additional user interface features e.g. rewards scheme, user login, customer product ratings, links to websites
-
- * Consider use Django, Kivy, pyQT to deploy app.
+  * Include additional user interface features e.g. rewards scheme, user login, customer product ratings, links to websites
+  * Consider use Django, Kivy, pyQT to deploy app.
 
