@@ -44,12 +44,12 @@ ShopRec aims to **personalise** customer retail shopping experience, and revital
 ![Chart](Deployment/images/chart.jpg)
 
 ### 2. Data Processing:
-2a. Product Database:
+- 2a. Product Database:
   * Webscraped data was cleaned e.g. similar clothing types were mapped to a consistent category
   * All scraped images were saved in a product database, with characteristics recorded (e.g. brand name, clothing type, gender).
 ![Process](Deployment/images/data_process.jpg)
 
-2b. User Shopping History Generation:
+- 2b. User Shopping History Generation:
   * Multiple shopping personas were created to represent the distribution of clothing items purchased by customers. An example of “Men’s Casual” and “Men’s Smart” personas are      shown below.
   * E.g. a user could shop at 50% Nike, 30% Uniqlo, 20% Fred Perry, and buying 60% T-shirts, 20% trousers, 20% jumpers.
   * User histories were generated using these shopping profiles and sampling the product database based on the product/shop weights. Deviations were included to prevent              overfitting to the original shopping profiles.
