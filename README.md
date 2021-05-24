@@ -40,6 +40,7 @@ ShopRec aims to **personalise** customer retail shopping experience, and revital
 ![Labeling](Deployment/images/labeling.jpg)
 - 1c. Product and Shops
  * 12 categories of clothing, 13 stores, c. 6000 images in total.
+
 ![Chart](Deployment/images/chart.jpg)
 
 ####2. Data Processing:
@@ -70,11 +71,11 @@ ShopRec aims to **personalise** customer retail shopping experience, and revital
 - 3c. Confusion Matrix:
  * Total average precision: 69%, recall: 73%
  * Confusion Matrix shows all categories generally predict well
-![Confusion Matrix](Deployment/images/confusion_matrix)
+![Confusion Matrix](Deployment/images/confusion_matrix.jpg)
 - 3d. F1 Curve
  * The F1 curve shows the F1 score across different confidence levels, i.e. the Precision / Recall trade off in our model.
  * Using a 42% confidence for predictions in our model would give the best F1 score of 69%.
-![F1 Curve](Deployment/images/f1)
+![F1 Curve](Deployment/images/f1.jpg)
 
 ####4. Recommendation System:
 - 4a. Nearest Neighbours:
@@ -85,7 +86,7 @@ ShopRec aims to **personalise** customer retail shopping experience, and revital
  * Nearest Neighbours were found based on Euclidean distance to both these weightings. A static distance matrix of the distance between all known users was calculated and          stored, which allowed faster calculations of nearest neighbours.
 
  * For illustration, User 1 and 193 are nearest neighbours as they both have very similar Product and Shop profiles.
-![distribution2](Deployment/images/distribution2)
+![distribution2](Deployment/images/distribution2.jpg)
 
 - 4b. Recommendations:
    Once nearest neighbours are established for a user, the recommendation system works as follows:
@@ -95,16 +96,16 @@ ShopRec aims to **personalise** customer retail shopping experience, and revital
    Products bought by nearest neighbours are ranked and recommended based on popularity.
 
    Users are also able to filter their recommendation e.g. by specific stores, and/or by product type.
-![Recommendation](Deployment/images/rec_ex1)
+![Recommendation](Deployment/images/rec_ex1.jpg)
 
 ####5. Deployment
 5a. Streamlit:
  * A proof of concept app was deployed in Streamlit due to ease of implementation.
  * This demonstrates functionality of image detection and recommendation system
 
-![Registered](Deployment/images/Recommendation_video)
-![Upload](Deployment/images/Load_image_Demo)
-![Webcam](Deployment/images/vision_recommendation)
+![Registered](Deployment/images/Recommendation_video.gif)
+![Upload](Deployment/images/Load_image_Demo.gif)
+![Webcam](Deployment/images/vision_recommendation.gif)
 
 ### Future Enhancements:
 - Feature Extractions:
