@@ -2,26 +2,18 @@
 
 ### Project Goals:
 
-ShopRec is a Computer Vision recommendation system, used for in store personalised clothing recommendations.
+ShopRec is a **Computer Vision recommendation system**, used for in store personalised clothing recommendations.
 
-ShopRec aims to personalise customer retail shopping experience, and revitalise in store shopping.
-![image](https://user-images.githubusercontent.com/76938311/119313842-96786e00-bca6-11eb-9dd7-a39a934a0774.png)
-
-
-The uses of facial recognition technology include:
-- Security & Law Enforcement: criminal databases, validating identity at ATMs
-- Mobile device security: Unlocking phones, authorising transactions
-- Smart advertisement: Targeted adverts based on people's age and gender
-- Tracking attendance: In person and online (Zoom)
+ShopRec aims to **personalise** customer retail shopping experience, and revitalise in store shopping.
 
 
 ### Business Case:
-Our Facial Recognition products aim to provide benefits to businesses, by providing tools for:
-- Enhanced Security: Protection against unauthorised visitors/users
-- Employee Welfare: Detection of aggressive behaviour and physical threats against employees, and employee well-being detection.
-- Sales: Smart Advertising techniques tailored to the user's age/gender
-
-An example database with user images was created and facial recognition models were trained to recognise these authorised users. Features such as emotion detection and gender/age detection have also been implemented.
+ShopRec aims to provide benefits to businesses:
+- Undiscovered Opportunity:
+  * Lack of multi brand / shop recommendation systems.
+  * Gap in the market for computer vision.
+- Multiple Benefits: 
+  * Customers, Shops and Shopping Centres will all benefit from innovation.
 
 
 ### Model Overview:
